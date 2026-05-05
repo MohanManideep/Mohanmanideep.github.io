@@ -1,0 +1,558 @@
+{
+  "profile": {
+    "person_id": "1",
+    "full_name": "Mohan Manideep Danda",
+    "headline": "M.Sc. Artificial Intelligence & Robotics Student | Mobile Robotics | Data Analysis | Machine Learning",
+    "short_bio": "Master’s student in Artificial Intelligence & Robotics at the University of Technology Nuremberg with a foundation in mechanical engineering.",
+    "long_bio": "A B.Tech graduate in Mechanical Engineering from Narayana Engineering College and current M.Sc. Artificial Intelligence & Robotics student at the University of Technology Nuremberg. Professional experience includes robotics prototyping as a Design Engineer at Robomonk.ai, manufacturing/process improvement as a Graduate Engineer Trainee at Amber Enterprises, leadership as President of the Robotic Society of India student chapter, and internships across IoT, automotive assembly, and refinery operations. Interested in mobile robotics, data analysis, machine learning, Industry 4.0, and industrial engineering.",
+    "location": "Nuremberg, Germany",
+    "email": "mohanmanideepdanda@gmail.com",
+    "profile_photo": "https://drive.google.com/file/d/1j3xrUxxJ0L2WjIbYN_tvKbsRDmHsRZcX/view?usp=drive_link",
+    "resume_url": "https://drive.google.com/file/d/1_YuhfiSNyuJuH_oEDaQ1pcAw_ulIlswm/view?usp=drive_link"
+  },
+  "links": [
+    {
+      "link_id": "1",
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/mohan-manideep-danda/",
+      "icon": "linkedin",
+      "importance_index": "1",
+      "is_public": true
+    },
+    {
+      "link_id": "2",
+      "label": "github",
+      "url": "https://github.com/Mohanmanideep",
+      "icon": "github",
+      "importance_index": "2",
+      "is_public": true
+    },
+    {
+      "link_id": "3",
+      "label": "email",
+      "url": "mailto:mohanmanideepdanda@gmail.com",
+      "icon": "mail",
+      "importance_index": "3",
+      "is_public": true
+    }
+  ],
+  "education": [
+    {
+      "education id": "1",
+      "institution": "University of Technology Nuremberg",
+      "degree": "Master's degree",
+      "field": "Artificial Intelligence and Robotics",
+      "start_date": "Oct 2025",
+      "end_date": "",
+      "location": "Nuremberg, Germany",
+      "description": "Master's degree in Artificial Intelligence and Robotics. Focused on AI, robotics, mobile robotics, data analysis, machine learning, and intelligent systems.",
+      "importance_index": "1"
+    },
+    {
+      "education id": "2",
+      "institution": "Narayana Engineering College - India",
+      "degree": "Bachelor of Technology - BTech",
+      "field": "Mechanical Engineering",
+      "start_date": "Aug 2020",
+      "end_date": "Jun 2024",
+      "location": "Nellore, India",
+      "description": "Bachelor's degree in Mechanical Engineering with foundation in robotics, CAD, manufacturing, automation, mechanical systems, and engineering project work.",
+      "importance_index": "2"
+    }
+  ],
+  "experience": [
+    {
+      "experience_id": "1",
+      "role": "Design Engineer",
+      "organization": "Robomonk.ai",
+      "type": "Engineering / Robotics Prototyping",
+      "start_date": "Mar 2025",
+      "end_date": "Aug 2025",
+      "location": "Nellore, Andhra Pradesh, India",
+      "summary": "Contributed to initiatives aligned with robotics and artificial intelligence. Worked on educational and prototype robotic systems involving mechanical design, embedded systems, 3D printing, and AI-enabled control logic.",
+      "technology": "Robotics prototyping, mechanical design, embedded systems, 3D printing, AI-enabled control logic",
+      "importance_index": "1",
+      "is_public": true
+    },
+    {
+      "experience_id": "2",
+      "role": "Graduate Engineer Trainee",
+      "organization": "Amber Enterprises India Limited",
+      "type": "Manufacturing / Operations",
+      "start_date": "Jul 2024",
+      "end_date": "Dec 2024",
+      "location": "Sricity, Tada, Andhra Pradesh, India",
+      "summary": "Worked in the press shop with focus on improving Overall Equipment Effectiveness. Analysed production and downtime data to identify bottlenecks, inefficiencies, and machine utilisation issues.",
+      "technology": "OEE analysis, production data analysis, downtime reduction, machine utilisation, process improvement",
+      "importance_index": "2",
+      "is_public": true
+    },
+    {
+      "experience_id": "3",
+      "role": "President",
+      "organization": "Robotic Society of India",
+      "type": "Leadership / Student Chapter",
+      "start_date": "Mar 2022",
+      "end_date": "Feb 2024",
+      "location": "Nellore, Andhra Pradesh, India",
+      "summary": "Led the Student Local Chapter and organized educational events and seminars with the Robotic Society of India to create a stronger robotics learning environment.",
+      "technology": "Robotics leadership, event organization, seminars, student community building",
+      "importance_index": "3",
+      "is_public": true
+    },
+    {
+      "experience_id": "4",
+      "role": "Intern",
+      "organization": "Sri Shasha Prayathi Technologies Pvt. Ltd.",
+      "type": "Internship / IoT",
+      "start_date": "May 2023",
+      "end_date": "Jun 2023",
+      "location": "Sri Potti Sri Ramulu Nellore, Andhra Pradesh, India",
+      "summary": "Focused on programming with Arduino Uno for IoT applications and gained hands-on experience connecting programming with Internet of Things technologies.",
+      "technology": "Arduino Uno, IoT, programming, embedded systems",
+      "importance_index": "4",
+      "is_public": true
+    },
+    {
+      "experience_id": "5",
+      "role": "Internship Trainee",
+      "organization": "AAR AUTOCORP PRIVATE LIMITED",
+      "type": "Internship / Automotive",
+      "start_date": "Sep 2022",
+      "end_date": "Nov 2022",
+      "location": "Nellore, Andhra Pradesh, India",
+      "summary": "Gained hands-on automotive industry experience focused on assembly and disassembly processes for bikes, building practical understanding of manufacturing and maintenance workflows.",
+      "technology": "Automotive assembly, disassembly, maintenance processes, manufacturing workflow",
+      "importance_index": "5",
+      "is_public": true
+    },
+    {
+      "experience_id": "6",
+      "role": "Intern",
+      "organization": "SANTHOSHIMATHAA EDIBLE OILS REFINERY PRIVATE LIMITED",
+      "type": "Internship / Refinery Operations",
+      "start_date": "Aug 2022",
+      "end_date": "Sep 2022",
+      "location": "Muthukur, Andhra Pradesh, India",
+      "summary": "Gained exposure to oil refinery operations, quality standards in oil production, refinery machinery, and industrial process environments.",
+      "technology": "Refinery operations, production quality, industrial machinery, process exposure",
+      "importance_index": "6",
+      "is_public": true
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "1",
+      "tittle": "Mapping Urban Change in Nuremberg with Machine Learning",
+      "subtittle": "Geospatial ML workflow for land-cover and urban-change prediction",
+      "category": "Machine Learning / Geospatial AI",
+      "status": "Completed",
+      "summary": "Built a geospatial machine learning workflow to predict land-cover composition and urban change using Sentinel-2 imagery, ESA WorldCover, and WorldPop data.",
+      "problem": "Urban-change analysis requires combining satellite imagery, population data, and land-cover labels into a reproducible modelling workflow.",
+      "solution": "Engineered a preprocessing pipeline across 43,281 grid cells of 100m x 100m for 2019-2023 analysis and evaluated Linear Regression, Ridge, Elastic Net, Extra Trees, and LightGBM.",
+      "impact": "Best model achieved R2 = 0.915 for built-up and R2 = 0.923 for vegetation.",
+      "tech_stack": "Python, machine learning, geospatial analysis, Sentinel-2, ESA WorldCover, WorldPop, Linear Regression, Ridge, Elastic Net, Extra Trees, LightGBM",
+      "github_url": "",
+      "paper_url": "",
+      "is_public": true,
+      "importance_index": "1"
+    },
+    {
+      "project_id": "2",
+      "tittle": "Redshift Workload Analytics Pipeline",
+      "subtittle": "Data pipeline for analysing Redshift query workloads",
+      "category": "Data Engineering / Analytics",
+      "status": "Completed",
+      "summary": "Designed a data pipeline to analyse Redshift query workloads across provisioned and serverless deployments.",
+      "problem": "Raw Redshift workload data needed cleaning, normalisation, interval reconstruction, and useful deployment-level utilisation analysis.",
+      "solution": "Cleaned and normalised workload data, reconstructed query execution intervals, and implemented overlap-aware aggregation in fixed 5-minute windows.",
+      "impact": "Generated frontend-ready utilisation datasets at deployment and instance level, stored in Parquet and DuckDB.",
+      "tech_stack": "Python, SQL, data pipelines, Redshift, Parquet, DuckDB, workload analytics",
+      "github_url": "",
+      "paper_url": "",
+      "is_public": true,
+      "importance_index": "2"
+    },
+    {
+      "project_id": "3",
+      "tittle": "Smart Wheelchair with Assistive Automation",
+      "subtittle": "Joystick-controlled assistive wheelchair with sensor-based monitoring",
+      "category": "Robotics / Embedded Systems",
+      "status": "Completed",
+      "summary": "Designed a joystick-controlled smart wheelchair with sensor-based monitoring for temperature and basic health parameters.",
+      "problem": "Mobility-assistive systems need reliable user control, sensor integration, and practical mechanical-electrical system design.",
+      "solution": "Implemented joystick-controlled mobility, sensor-based monitoring, an automated storage box mechanism, and supporting control logic.",
+      "impact": "Built practical experience in system integration, sensor interfacing, actuator control, and assistive automation.",
+      "tech_stack": "Embedded systems, sensors, actuator control, joystick control, mechanical design, robotics prototyping",
+      "github_url": "",
+      "paper_url": "",
+      "is_public": true,
+      "importance_index": "3"
+    },
+    {
+      "project_id": "4",
+      "tittle": "Design and Development of Multi-Purpose Drone",
+      "subtittle": "Payload-capable UAV using Pixhawk 2.4.8",
+      "category": "Robotics / UAV",
+      "status": "Completed",
+      "summary": "Designed and developed a versatile unmanned aerial vehicle capable of carrying a payload of up to 1.5 kg.",
+      "problem": "The project aimed to create a flexible UAV platform suitable for aerial photography, payload delivery, and multi-purpose applications.",
+      "solution": "Used Pixhawk 2.4.8 for control and navigation and engineered the drone as a multi-purpose UAV platform.",
+      "impact": "Demonstrated applied robotics, control, navigation, payload design, and mechanical integration work.",
+      "tech_stack": "UAV systems, Pixhawk 2.4.8, control, navigation, payload design, robotics",
+      "github_url": "",
+      "paper_url": "",
+      "is_public": true,
+      "importance_index": "4"
+    }
+  ],
+  "skills": [
+    {
+      "skill_id": "1",
+      "skill_name": "Mobile Robotics",
+      "category": "Robotics",
+      "level": "Top Skill",
+      "importance_index": "1",
+      "is_public": true
+    },
+    {
+      "skill_id": "2",
+      "skill_name": "Data Analysis",
+      "category": "Analytics",
+      "level": "Top Skill",
+      "importance_index": "2",
+      "is_public": true
+    },
+    {
+      "skill_id": "3",
+      "skill_name": "Machine Learning",
+      "category": "AI / ML",
+      "level": "Top Skill",
+      "importance_index": "3",
+      "is_public": true
+    },
+    {
+      "skill_id": "4",
+      "skill_name": "Python",
+      "category": "Software & Data",
+      "level": "Applied Experience",
+      "importance_index": "4",
+      "is_public": true
+    },
+    {
+      "skill_id": "5",
+      "skill_name": "SQL",
+      "category": "Software & Data",
+      "level": "Applied Experience",
+      "importance_index": "5",
+      "is_public": true
+    },
+    {
+      "skill_id": "6",
+      "skill_name": "Data pipelines",
+      "category": "Software & Data",
+      "level": "Applied Experience",
+      "importance_index": "6",
+      "is_public": true
+    },
+    {
+      "skill_id": "7",
+      "skill_name": "DuckDB",
+      "category": "Software & Data",
+      "level": "Project Experience",
+      "importance_index": "7",
+      "is_public": true
+    },
+    {
+      "skill_id": "8",
+      "skill_name": "Parquet",
+      "category": "Software & Data",
+      "level": "Project Experience",
+      "importance_index": "8",
+      "is_public": true
+    },
+    {
+      "skill_id": "9",
+      "skill_name": "Geospatial analysis",
+      "category": "Analytics",
+      "level": "Project Experience",
+      "importance_index": "9",
+      "is_public": true
+    },
+    {
+      "skill_id": "10",
+      "skill_name": "Data preprocessing",
+      "category": "Analytics",
+      "level": "Applied Experience",
+      "importance_index": "10",
+      "is_public": true
+    },
+    {
+      "skill_id": "11",
+      "skill_name": "Model evaluation",
+      "category": "Analytics",
+      "level": "Applied Experience",
+      "importance_index": "11",
+      "is_public": true
+    },
+    {
+      "skill_id": "12",
+      "skill_name": "Embedded systems",
+      "category": "Systems & Prototyping",
+      "level": "Applied Experience",
+      "importance_index": "12",
+      "is_public": true
+    },
+    {
+      "skill_id": "13",
+      "skill_name": "Sensor integration",
+      "category": "Systems & Prototyping",
+      "level": "Applied Experience",
+      "importance_index": "13",
+      "is_public": true
+    },
+    {
+      "skill_id": "14",
+      "skill_name": "Robotics prototyping",
+      "category": "Systems & Prototyping",
+      "level": "Applied Experience",
+      "importance_index": "14",
+      "is_public": true
+    },
+    {
+      "skill_id": "15",
+      "skill_name": "CAD",
+      "category": "Mechanical Design",
+      "level": "Applied Experience",
+      "importance_index": "15",
+      "is_public": true
+    },
+    {
+      "skill_id": "16",
+      "skill_name": "3D printing",
+      "category": "Systems & Prototyping",
+      "level": "Applied Experience",
+      "importance_index": "16",
+      "is_public": true
+    },
+    {
+      "skill_id": "17",
+      "skill_name": "Process improvement",
+      "category": "Operations",
+      "level": "Applied Experience",
+      "importance_index": "17",
+      "is_public": true
+    },
+    {
+      "skill_id": "18",
+      "skill_name": "OEE analysis",
+      "category": "Operations",
+      "level": "Applied Experience",
+      "importance_index": "18",
+      "is_public": true
+    },
+    {
+      "skill_id": "19",
+      "skill_name": "Production data analysis",
+      "category": "Operations",
+      "level": "Applied Experience",
+      "importance_index": "19",
+      "is_public": true
+    },
+    {
+      "skill_id": "20",
+      "skill_name": "Arduino",
+      "category": "Embedded / IoT",
+      "level": "Internship Experience",
+      "importance_index": "20",
+      "is_public": true
+    },
+    {
+      "skill_id": "21",
+      "skill_name": "Arduino IDE",
+      "category": "Embedded / IoT",
+      "level": "Internship Experience",
+      "importance_index": "21",
+      "is_public": true
+    },
+    {
+      "skill_id": "22",
+      "skill_name": "Raspberry Pi",
+      "category": "Embedded / IoT",
+      "level": "Basic / Applied Exposure",
+      "importance_index": "22",
+      "is_public": true
+    },
+    {
+      "skill_id": "23",
+      "skill_name": "CATIA V5",
+      "category": "Mechanical Design",
+      "level": "Applied Experience",
+      "importance_index": "23",
+      "is_public": true
+    },
+    {
+      "skill_id": "24",
+      "skill_name": "SolidWorks",
+      "category": "Mechanical Design",
+      "level": "Applied Experience",
+      "importance_index": "24",
+      "is_public": true
+    },
+    {
+      "skill_id": "25",
+      "skill_name": "ANSYS Mechanical",
+      "category": "Mechanical Simulation",
+      "level": "Advanced",
+      "importance_index": "25",
+      "is_public": true
+    },
+    {
+      "skill_id": "26",
+      "skill_name": "MySQL",
+      "category": "Database",
+      "level": "Applied Experience",
+      "importance_index": "26",
+      "is_public": true
+    },
+    {
+      "skill_id": "27",
+      "skill_name": "C programming",
+      "category": "Programming",
+      "level": "Applied Exposure",
+      "importance_index": "27",
+      "is_public": true
+    },
+    {
+      "skill_id": "28",
+      "skill_name": "Java",
+      "category": "Programming",
+      "level": "Applied Exposure",
+      "importance_index": "28",
+      "is_public": true
+    }
+  ],
+  "interests": [
+    {
+      "interest_id": "1",
+      "name": "Mobile Robotics",
+      "category": "Research / Engineering Interest",
+      "description": "Interested in robotic systems that can move, sense, and operate in real-world environments.",
+      "importance_index": "1",
+      "is_public": true
+    },
+    {
+      "interest_id": "2",
+      "name": "Machine Learning",
+      "category": "AI Interest",
+      "description": "Interested in applying machine learning to engineering, robotics, geospatial, and industrial problems.",
+      "importance_index": "2",
+      "is_public": true
+    },
+    {
+      "interest_id": "3",
+      "name": "Data Analysis",
+      "category": "Technical Interest",
+      "description": "Interested in using data analysis to understand systems, identify bottlenecks, and support better technical decisions.",
+      "importance_index": "3",
+      "is_public": true
+    },
+    {
+      "interest_id": "4",
+      "name": "Industry 4.0",
+      "category": "Industrial Engineering Interest",
+      "description": "Interested in using robotics, automation, analytics, and machine learning to solve industrial engineering challenges.",
+      "importance_index": "4",
+      "is_public": true
+    },
+    {
+      "interest_id": "5",
+      "name": "Geospatial AI",
+      "category": "Applied AI Interest",
+      "description": "Interested in satellite-data workflows, land-cover modelling, and urban-change analysis using machine learning.",
+      "importance_index": "5",
+      "is_public": true
+    },
+    {
+      "interest_id": "6",
+      "name": "Robotics Prototyping",
+      "category": "Engineering Interest",
+      "description": "Interested in combining mechanical design, embedded systems, sensors, and fabrication into working robotic prototypes.",
+      "importance_index": "6",
+      "is_public": true
+    },
+    {
+      "interest_id": "7",
+      "name": "Industrial Engineering",
+      "category": "Engineering Interest",
+      "description": "Interested in improving industrial systems through process optimisation, automation, data analysis, and practical engineering solutions.",
+      "importance_index": "7",
+      "is_public": true
+    },
+    {
+      "interest_id": "8",
+      "name": "IoT Applications",
+      "category": "Technical Interest",
+      "description": "Interested in Arduino, embedded programming, sensor systems, and IoT-based automation.",
+      "importance_index": "8",
+      "is_public": true
+    }
+  ],
+  "media": [
+    {
+      "media_id": "1",
+      "type": "image",
+      "tittle": "Profile Photo",
+      "url": "https://drive.google.com/file/d/1j3xrUxxJ0L2WjIbYN_tvKbsRDmHsRZcX/view?usp=drive_link",
+      "alt_text": "Profile photo of Mohan Manideep Danda",
+      "related_type": "profile",
+      "is_public": true
+    },
+    {
+      "media_id": "2",
+      "type": "document",
+      "tittle": "Resume",
+      "url": "https://drive.google.com/file/d/1_YuhfiSNyuJuH_oEDaQ1pcAw_ulIlswm/view?usp=drive_link",
+      "alt_text": "Resume of Mohan Manideep Danda",
+      "related_type": "profile",
+      "is_public": true
+    }
+  ],
+  "site_config": [
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "show_projects",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": true,
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Show projects section"
+    },
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "show_experience",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": true,
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Show experience section"
+    },
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "show_education",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": true,
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Show education section"
+    },
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "show_skills",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": true,
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Show skills section"
+    },
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "show_interests",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": true,
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Show interests section"
+    },
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "show_contact",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": true,
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Show contact section"
+    },
+    {
+      "Key website_name website_url theme_mode visual_style accent_color layout_style animation_style primary_cta secondary_cta": "default_sort",
+      "value Mohan Manideep Danda https://mohanmanideep.github.io dark Futuristic AI and robotics portfolio cyan / blue bento grid smooth minimal motion View Projects Download Resume": "",
+      "description Main portfolio display name GitHub Pages portfolio URL Default visual theme Overall design direction Primary accent color Portfolio card layout style Recommended animation direction Homepage primary button Homepage secondary button": "Default sorting field for sections"
+    }
+  ]
+}
