@@ -850,13 +850,6 @@ function ContactSection() {
               GitHub
             </a>
           </motion.div>
-
-          <motion.p className="contact-email" variants={fadeInUp}>
-            or reach out at{" "}
-            <a href={`mailto:${profile.email}`}>
-              {profile.email}
-            </a>
-          </motion.p>
         </motion.div>
       </div>
     </section>
@@ -864,7 +857,7 @@ function ContactSection() {
 }
 
 function Footer() {
-  const { profile, links } = portfolioData;
+  const { profile } = portfolioData;
 
   return (
     <footer className="footer">
@@ -872,20 +865,6 @@ function Footer() {
         <div className="footer-name">
           <Sparkles size={18} />
           <span>{profile.name}</span>
-        </div>
-
-        <div className="footer-links">
-          <a href={links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <Code2 size={18} />
-          </a>
-
-          <a href={links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <ExternalLink size={18} />
-          </a>
-
-          <a href={`mailto:${links.email}`} aria-label="Email">
-            <Mail size={18} />
-          </a>
         </div>
 
         <p>© {new Date().getFullYear()} {profile.name}. Built for AI & Robotics.</p>
