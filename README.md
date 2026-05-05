@@ -1,16 +1,73 @@
-# React + Vite
+# Mohan Manideep Danda — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the personal portfolio website of **Mohan Manideep Danda**.
 
-Currently, two official plugins are available:
+**Live Website:**
+https://mohanmanideep.github.io
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The website showcases my profile, projects, work experience, education, technical skills, research interests, and contact links in a clean, responsive portfolio format.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## About This Project
 
-## Expanding the ESLint configuration
+This is not just a static portfolio website.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+It is a **data-driven portfolio system** built using **React, Vite, Google Sheets, Google Apps Script, GitHub Actions, and GitHub Pages**.
+
+The main idea is simple:
+
+> I manage my portfolio content from a Google Spreadsheet, and the website updates automatically when I click an update button.
+
+Instead of editing code every time I want to add a project, update my skills, or change my profile information, I update a Google Sheet. A custom button inside the sheet triggers GitHub Actions, fetches the latest data, rebuilds the website, and deploys it to GitHub Pages.
+
+---
+
+## Why I Built It This Way
+
+The goal was to build a portfolio that is:
+
+- easy to update
+- free to host
+- data-driven
+- automated
+- recruiter-friendly
+- technically meaningful
+
+This setup works like a lightweight personal CMS. Google Sheets acts as the content management system, while GitHub Actions handles the CI/CD pipeline.
+
+---
+
+## Main Features
+
+- Personal portfolio hosted on GitHub Pages
+- Google Sheets used as a lightweight CMS
+- One-click website update from Google Sheets
+- Automated deployment through GitHub Actions
+- Data converted into `portfolio.json` during build
+- Responsive design for desktop and mobile
+- Smooth UI animations using Framer Motion
+- Sections for profile, projects, experience, education, skills, interests, and contact
+
+---
+
+## Content Update Flow
+
+To update the live website:
+
+```text
+1. Edit content in the Google Spreadsheet
+2. Click the Update Website button
+3. GitHub Actions starts automatically
+4. The latest spreadsheet data is fetched
+5. The website is rebuilt and deployed
+6. The live portfolio updates
+```
+
+## Author
+
+**Mohan Manideep Danda**
+
+- Portfolio: https://mohanmanideep.github.io
+- GitHub: https://github.com/Mohanmanideep
+- LinkedIn: https://www.linkedin.com/in/mohan-manideep-danda/
