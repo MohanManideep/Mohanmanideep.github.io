@@ -115,10 +115,10 @@
 }
 
 .nav-scrolled {
-  background: rgba(23, 21, 18, 0.8);
-  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(18px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .nav-inner {
@@ -160,13 +160,13 @@
 
 .nav-links a {
   position: relative;
-  color: var(--muted-foreground);
+  color: #555555;
   font-size: 0.92rem;
   transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-  color: var(--foreground);
+  color: #000000;
 }
 
 .nav-links a::after {
