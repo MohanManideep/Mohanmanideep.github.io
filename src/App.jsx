@@ -331,6 +331,31 @@ function Navigation() {
 function HeroSection() {
   const { profile } = portfolioData;
 
+const getImageUrl = (url) => {
+  if (!url) return "";
+
+  // Already direct thumbnail URL
+  if (url.includes("drive.google.com/thumbnail")) {
+    return url;
+  }
+
+  // Google Drive file URL: /file/d/FILE_ID/view
+  const fileMatch = url.match(/\/file\/d\/([^/]+)/);
+
+  // Google Drive open URL: ?id=FILE_ID
+  const idMatch = url.match(/[?&]id=([^&]+)/);
+
+  const fileId = fileMatch?.[1] || idMatch?.[1];
+
+  if (fileId) {
+    return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+  }
+
+  return url;
+};
+
+const photoUrl = getImageUrl(profile.profilePhoto);
+
   return (
     <section className="hero">
       <div className="hero-background">
@@ -405,19 +430,29 @@ function HeroSection() {
             <div className="hero-shape shape-one" />
             <div className="hero-shape shape-two" />
 
-            <div className="hero-core-card">
-              <div className="hero-icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path
-                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
+            <div className="hero-core-card hero-photo-card">
+              {photoUrl ? (
+                <img
+                  src={photoUrl}
+                  alt={profile.name}
+                  className="hero-profile-photo"
+                />
+              ) : (
+                <>
+                  <div className="hero-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path
+                        d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
 
-              <p>AI & Robotics</p>
-              <h3>Engineer</h3>
+                  <p>AI & Robotics</p>
+                  <h3>Engineer</h3>
+                </>
+              )}
             </div>
 
             <div className="floating-token floating-token-one">🤖</div>
