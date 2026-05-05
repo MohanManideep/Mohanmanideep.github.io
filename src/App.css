@@ -440,7 +440,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center -20%;
-  transform: scale(0.9);
+  transform: scale(1.03);
   transform-origin: center top;
   display: block;
 }
