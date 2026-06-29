@@ -71,3 +71,12 @@ To update the live website:
 - Portfolio: https://mohanmanideep.github.io
 - GitHub: https://github.com/Mohanmanideep
 - LinkedIn: https://www.linkedin.com/in/mohan-manideep-danda/
+
+## Technical Paper
+
+This project includes a technical paper describing the design, implementation, and evaluation of the spreadsheet-driven static portfolio deployment pipeline.
+
+- [Read the Paper](docs/website_paper.pdf)
+- [LaTeX Source](docs/main.tex)
+
+The paper covers the Google Sheets CMS structure, GitHub Actions deployment workflow, React/Vite frontend, GitHub Pages hosting, and evaluation results using deployment timings, Lighthouse scores, and runtime observations.
