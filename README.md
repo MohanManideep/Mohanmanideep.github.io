@@ -80,3 +80,9 @@ This project includes a technical paper describing the design, implementation, a
 - [LaTeX Source](docs/main.tex)
 
 The paper covers the Google Sheets CMS structure, GitHub Actions deployment workflow, React/Vite frontend, GitHub Pages hosting, and evaluation results using deployment timings, Lighthouse scores, and runtime observations.
+
+**DOI:** [10.5281/zenodo.21041486](https://doi.org/10.5281/zenodo.21041486)
+
+**Citation:**
+
+Mohan Manideep Danda. *Design and Evaluation of a Spreadsheet-Driven Static Portfolio Deployment Pipeline Using Google Sheets and GitHub Actions*. Zenodo, 2026. https://doi.org/10.5281/zenodo.21041486
