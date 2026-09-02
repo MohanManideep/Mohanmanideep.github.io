@@ -64,6 +64,54 @@ To update the live website:
 6. The live portfolio updates
 ```
 
+---
+
+## The Pipeline Contract (read before changing anything)
+
+The automatic "update from Google Sheets" flow depends on exactly six things. As long as
+these are left alone, the update button keeps working. Everything else in this repository
+can be changed freely.
+
+| # | Must not change | Where |
+|---|---|---|
+| 1 | The dispatch event name `spreadsheet_update` | `.github/workflows/deploy.yml` — must match what the Apps Script sends |
+| 2 | The spreadsheet ID and the nine tab names | `scripts/fetch-sheet-data.js` (`SPREADSHEET_ID`, `SHEETS`) |
+| 3 | The sheet stays readable by anyone with the link | the CSV endpoint sends no credentials — a private sheet fails the build |
+| 4 | The column headers the app reads | `src/App.jsx` (`normalizePortfolio`) — including `tittle`, `subtittle`, `education id` |
+| 5 | The output path `src/data/portfolio.json` | written by the fetch script, imported by `src/App.jsx` |
+| 6 | The workflow step order | fetch must run **before** build |
+
+### Known quirks, kept on purpose
+
+- The Projects tab headers are spelled `tittle` / `subtittle`, and the Education tab uses
+  `education id` with a space. The code accepts both these and the correct spellings, so
+  renaming the columns is unnecessary and risky — a rename must land in the sheet and the
+  code at the same time or the section disappears from the live site.
+- The `Media` and `Site_config` tabs are fetched but not currently rendered.
+
+### Safe way to test a change to the pipeline
+
+1. Push the change, then run the workflow from the **Actions** tab (Run workflow) rather
+   than from the sheet — this isolates a code change from the Apps Script.
+2. Check the "Fetch Google Sheet data" step logged all nine tabs.
+3. Only then press the update button in the sheet to confirm the dispatch path.
+4. If anything looks wrong, `git revert` and push. GitHub Pages keeps serving the last
+   successful deploy, so a failed build never takes the live site down.
+
+### Local development
+
+```bash
+npm ci
+npm run dev      # uses the committed portfolio.json snapshot
+npm run build
+npm run lint
+```
+
+`src/data/portfolio.json` is committed as a snapshot so the site can be developed offline.
+It is overwritten from the live sheet on every deploy.
+
+---
+
 ## Author
 
 **Mohan Manideep Danda**

@@ -57,7 +57,8 @@ const dateRange = (start, end) => {
   const e = text(end);
 
   if (s && e) return `${s} - ${e}`;
-  return s || e || "";
+  if (s) return `${s} - Present`;
+  return e || "";
 };
 
 const normalizeLinks = (links, profile) => {
@@ -100,8 +101,8 @@ const interestIcon = (interest) => {
   const value = `${interest.name || ""} ${interest.category || ""}`.toLowerCase();
 
   if (value.includes("robot") || value.includes("mobile")) return "robot";
-  if (value.includes("machine") || value.includes("ai")) return "brain";
   if (value.includes("geo") || value.includes("satellite") || value.includes("urban")) return "globe";
+  if (value.includes("machine") || value.includes("ai")) return "brain";
   if (value.includes("industry") || value.includes("manufacturing")) return "factory";
   if (value.includes("iot") || value.includes("embedded")) return "cpu";
 
@@ -160,7 +161,7 @@ const normalizePortfolio = (raw) => {
     .sort((a, b) => a.importanceIndex - b.importanceIndex);
 
   const education = (Array.isArray(raw.education) ? raw.education : [])
-    .filter((item) => text(item.institution))
+    .filter((item) => isPublic(item) && text(item.institution))
     .map((item, index) => ({
       id: text(item["education id"] || item.education_id || item.id) || `education-${index + 1}`,
       institution: text(item.institution),
@@ -258,7 +259,9 @@ function Navigation() {
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
+    { label: "Education", href: "#education" },
     { label: "Skills", href: "#skills" },
+    { label: "Interests", href: "#interests" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -403,18 +406,18 @@ const photoUrl = getImageUrl(profile.profilePhoto);
 
             <motion.div className="hero-stats" variants={fadeInUp}>
               <div>
-                <strong>{portfolioData.projects.length}+</strong>
+                <strong>{portfolioData.projects.length}</strong>
                 <span>Projects</span>
               </div>
 
               <div>
-                <strong>{portfolioData.experience.length}+</strong>
-                <span>Experience</span>
+                <strong>{portfolioData.experience.length}</strong>
+                <span>Roles</span>
               </div>
 
               <div>
                 <strong>
-                  {portfolioData.skills.reduce((count, group) => count + group.items.length, 0)}+
+                  {portfolioData.skills.reduce((count, group) => count + group.items.length, 0)}
                 </strong>
                 <span>Skills</span>
               </div>
@@ -436,6 +439,11 @@ const photoUrl = getImageUrl(profile.profilePhoto);
                   src={photoUrl}
                   alt={profile.name}
                   className="hero-profile-photo"
+                  width="256"
+                  height="256"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                 />
               ) : (
                 <>
@@ -771,7 +779,7 @@ function SkillsSection() {
 
 function InterestsSection() {
   return (
-    <section className="section section-muted">
+    <section id="interests" className="section section-muted">
       <div className="container">
         <SectionHeader kicker="Research Direction" title="Interests & Focus Areas" />
 
