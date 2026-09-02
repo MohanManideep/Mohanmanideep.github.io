@@ -1,50 +1,56 @@
-:root {
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+/* Design tokens.
+   Direction taken from the Site_config tab of the spreadsheet:
+   theme_mode = dark, visual_style = futuristic AI and robotics,
+   accent_color = cyan / blue, layout_style = bento grid. */
 
-  color: #111111;
-  background: #ffffff;
+:root {
+  /* Ground: blue-black rather than neutral, so the cyan sits in the same family */
+  --void: #060911;
+  --void-2: #080d17;
+  --panel: #0d1421;
+  --panel-2: #111a2b;
+  --panel-3: #16203400;
+
+  --ink: #e9f0fa;
+  --ink-2: #a9bad2;
+  --ink-3: #6f829c;
+
+  --line: rgba(125, 165, 210, 0.14);
+  --line-2: rgba(125, 165, 210, 0.28);
+
+  --cyan: #22d3ee;
+  --cyan-2: #67e8f9;
+  --blue: #4c7dff;
+  --violet: #8b7bff;
+
+  --accent-soft: rgba(34, 211, 238, 0.1);
+  --accent-line: rgba(34, 211, 238, 0.34);
+  --accent-glow: rgba(34, 211, 238, 0.24);
+
+  --ok: #34d8a4;
+  --ok-soft: rgba(52, 216, 164, 0.12);
+  --warn: #f5b544;
+  --warn-soft: rgba(245, 181, 68, 0.13);
+
+  --r-lg: 20px;
+  --r-md: 14px;
+  --r-sm: 9px;
+
+  --shell: 1180px;
+  --gutter: clamp(18px, 4vw, 40px);
+
+  --font-display: Sora, "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  color-scheme: dark;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--void);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --background: #ffffff;
-  --foreground: #111111;
-
-  --card: #ffffff;
-  --card-soft: rgba(0, 0, 0, 0.035);
-
-  --muted: #f2f2f2;
-  --muted-foreground: #5f5f5f;
-
-  --border: rgba(0, 0, 0, 0.12);
-
-  --primary: #000000;
-  --primary-soft: rgba(0, 0, 0, 0.06);
-  --primary-border: rgba(0, 0, 0, 0.22);
-
-  --green: #111111;
-  --green-soft: rgba(0, 0, 0, 0.06);
-  --green-border: rgba(0, 0, 0, 0.18);
-
-  --shadow: 0 24px 80px rgba(0, 0, 0, 0.08);
-
-  --radius-xl: 24px;
-  --radius-lg: 18px;
-  --radius-md: 12px;
-
-  --font-mono:
-    "JetBrains Mono",
-    "SFMono-Regular",
-    Consolas,
-    monospace;
 }
 
 * {
@@ -53,14 +59,16 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 92px;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--void);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
 a {
@@ -70,26 +78,75 @@ a {
 
 button {
   font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 ::selection {
-  background: #000000;
-  color: #ffffff;
+  background: var(--cyan);
+  color: #04121a;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.accent {
+  color: var(--cyan);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--void-2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
+  background: #1d2b42;
   border-radius: 999px;
+  border: 2px solid var(--void-2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: #2a3d5c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
