@@ -149,7 +149,7 @@ const normalizeGallery = (media, profile) => {
       id: text(row.media_id) || `plate-${index + 1}`,
       url: driveImageUrl(row.url),
       alt: text(row.alt_text) || text(row.tittle || row.title) || text(profile.name),
-      label: text(row.tittle || row.title) || `Plate ${index + 1}`,
+      label: text(row.tittle || row.title) || `Photo ${index + 1}`,
     }))
     .filter((photo) => photo.url);
 
@@ -317,17 +317,17 @@ const skillIcons = {
 };
 
 /* Sections, in page order. Doubles as the nav and the title-block index. */
-const SHEETS = [
+const SECTIONS = [
   { id: "about", label: "About", key: null },
-  { id: "projects", label: "Work", key: "show_projects" },
-  { id: "experience", label: "Path", key: "show_experience" },
-  { id: "education", label: "Study", key: "show_education" },
-  { id: "skills", label: "Stack", key: "show_skills" },
-  { id: "interests", label: "Focus", key: "show_interests" },
+  { id: "projects", label: "Projects", key: "show_projects" },
+  { id: "experience", label: "Experience", key: "show_experience" },
+  { id: "education", label: "Education", key: "show_education" },
+  { id: "skills", label: "Skills", key: "show_skills" },
+  { id: "interests", label: "Interests", key: "show_interests" },
   { id: "contact", label: "Contact", key: "show_contact" },
 ];
 
-const activeSheets = SHEETS.filter((sheet) => !sheet.key || showSection(sheet.key));
+const navSections = SECTIONS.filter((sheet) => !sheet.key || showSection(sheet.key));
 
 /* ==================================================================
    Small parts
@@ -394,7 +394,7 @@ function Dimension({ label, className = "", onMount = false, delay = 0 }) {
       <div className={`dim cover-wipe ${className}`} style={{ animationDelay: `${delay}s` }}>
         <span className="dim-cap" />
         <span className="dim-rule" />
-        <span className="anno dim-label">{label}</span>
+        <span className="label dim-label">{label}</span>
         <span className="dim-rule" />
         <span className="dim-cap" />
       </div>
@@ -411,14 +411,14 @@ function Dimension({ label, className = "", onMount = false, delay = 0 }) {
     >
       <span className="dim-cap" />
       <span className="dim-rule" />
-      <span className="anno dim-label">{label}</span>
+      <span className="label dim-label">{label}</span>
       <span className="dim-rule" />
       <span className="dim-cap" />
     </motion.div>
   );
 }
 
-function SheetHead({ no, kicker, title, note }) {
+function SheetHead({ kicker, title, note }) {
   return (
     <div className="sheet-head">
       <motion.div
@@ -428,13 +428,10 @@ function SheetHead({ no, kicker, title, note }) {
         viewport={seen}
         variants={stagger}
       >
-        <motion.span className="anno sheet-no" variants={rise}>
-          {no}
-        </motion.span>
-        <motion.span className="head-rule" variants={rise} />
-        <motion.span className="anno" variants={rise}>
+        <motion.span className="label kicker-text" variants={rise}>
           {kicker}
         </motion.span>
+        <motion.span className="head-rule" variants={rise} />
       </motion.div>
 
       <h2 className="sheet-title">
@@ -494,7 +491,7 @@ function PhotoPlates({ photos }) {
         <div className="plate-frame">
           <div className="plate plate-empty">
             <Bot size={38} />
-            <span className="anno">AI &amp; ROBOTICS</span>
+            <span className="label">AI &amp; ROBOTICS</span>
           </div>
         </div>
       </div>
@@ -551,8 +548,7 @@ function PhotoPlates({ photos }) {
       </div>
 
       <div className="plate-bar">
-        <span className="anno plate-label">
-          {many ? `PLATE ${order[0] + 1}/${photos.length}` : "PLATE 1/1"}
+        <span className="label plate-label">
           <em>{front.label}</em>
         </span>
 
@@ -570,59 +566,6 @@ function PhotoPlates({ photos }) {
 /* ==================================================================
    Fixed sheet chrome
    ================================================================== */
-
-function SheetFrame() {
-  return (
-    <div className="frame" aria-hidden="true">
-      <span className="frame-edge frame-t" />
-      <span className="frame-edge frame-b" />
-      <span className="frame-edge frame-l" />
-      <span className="frame-edge frame-r" />
-      <span className="frame-corner fc-tl" />
-      <span className="frame-corner fc-tr" />
-      <span className="frame-corner fc-bl" />
-      <span className="frame-corner fc-br" />
-    </div>
-  );
-}
-
-// The drawing's title block: tells you which sheet you're reading.
-function TitleBlock({ active }) {
-  const index = Math.max(0, activeSheets.findIndex((sheet) => sheet.id === active));
-  const current = activeSheets[index];
-
-  return (
-    <aside className="title-block" aria-hidden="true">
-      <div className="tb-row">
-        <span className="anno">SHEET</span>
-        <strong className="mono">
-          {String(index + 1).padStart(2, "0")}/{String(activeSheets.length).padStart(2, "0")}
-        </strong>
-      </div>
-
-      <div className="tb-row tb-main">
-        <span className="anno">SECTION</span>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.strong
-            key={current?.id || "top"}
-            className="mono"
-            initial={{ y: 9, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -9, opacity: 0 }}
-            transition={{ duration: 0.28, ease: EASE }}
-          >
-            {(current?.label || "Cover").toUpperCase()}
-          </motion.strong>
-        </AnimatePresence>
-      </div>
-
-      <div className="tb-row">
-        <span className="anno">REV</span>
-        <strong className="mono">{new Date().getFullYear()}</strong>
-      </div>
-    </aside>
-  );
-}
 
 function Nav({ active }) {
   const [open, setOpen] = useState(false);
@@ -655,18 +598,16 @@ function Nav({ active }) {
             <span className="mark-glyph">M</span>
             <span className="mark-text">
               <strong>DANDA</strong>
-              <em className="anno">DWG. 001</em>
             </span>
           </a>
 
           <nav className="nav-links">
-            {activeSheets.map((sheet, i) => (
+            {navSections.map((sheet) => (
               <a
                 key={sheet.id}
                 href={`#${sheet.id}`}
                 className={active === sheet.id ? "on" : ""}
               >
-                <span className="anno">{String(i + 1).padStart(2, "0")}</span>
                 {sheet.label}
               </a>
             ))}
@@ -692,7 +633,7 @@ function Nav({ active }) {
             </button>
 
             <nav className="drawer-links">
-              {activeSheets.map((sheet, i) => (
+              {navSections.map((sheet, i) => (
                 <motion.a
                   key={sheet.id}
                   href={`#${sheet.id}`}
@@ -701,7 +642,6 @@ function Nav({ active }) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + i * 0.055, duration: 0.5, ease: EASE }}
                 >
-                  <span className="anno">{String(i + 1).padStart(2, "0")}</span>
                   {sheet.label}
                   <ArrowUpRight size={20} />
                 </motion.a>
@@ -728,7 +668,7 @@ function Cover() {
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
   const skillCount = data.skills.reduce((n, group) => n + group.items.length, 0);
-  const role = profile.headline.split("|")[0].trim();
+  const role = profile.headline;
 
   return (
     <section className="cover" id="top" ref={ref}>
@@ -740,7 +680,6 @@ function Cover() {
 
       <motion.div className="cover-inner" style={{ y: parallax, opacity: fade }}>
         <div className="cover-top cover-rise" style={{ animationDelay: "0.04s" }}>
-          <span className="anno">DRAWING No. 001 — PERSONAL PROFILE</span>
           <span className="live">
             <span className="live-dot" />
             Available for opportunities
@@ -789,13 +728,13 @@ function Cover() {
                 { n: data.projects.length, l: "Projects" },
                 { n: data.experience.length, l: "Roles" },
                 { n: skillCount, l: "Skills" },
-                { n: data.interests.length, l: "Focus" },
+                { n: data.interests.length, l: "Interests" },
               ].map((stat) => (
                 <div key={stat.l}>
                   <dt>
                     <Counter value={stat.n} />
                   </dt>
-                  <dd className="anno">{stat.l}</dd>
+                  <dd className="label">{stat.l}</dd>
                 </div>
               ))}
             </dl>
@@ -808,7 +747,7 @@ function Cover() {
       </motion.div>
 
       <a href="#about" className="cover-scroll">
-        <span className="anno">SCROLL</span>
+        <span className="label">SCROLL</span>
         <ArrowDown size={15} />
       </a>
     </section>
@@ -832,7 +771,7 @@ function About() {
   return (
     <section id="about" className="sheet">
       <div className="wrap">
-        <SheetHead no="SHEET 01" kicker="General notes" title="From machines to machines that think." />
+        <SheetHead kicker="About" title="From machines to machines that think." />
 
         <div className="about-grid">
           <motion.div
@@ -869,9 +808,8 @@ function About() {
             viewport={seen}
             variants={stagger}
           >
-            {CAPABILITIES.map((cap, i) => (
+            {CAPABILITIES.map((cap) => (
               <motion.li key={cap.title} variants={rise}>
-                <span className="anno cap-no">{String(i + 1).padStart(2, "0")}</span>
                 <span className="cap-icon">
                   <cap.icon size={17} />
                 </span>
@@ -892,15 +830,13 @@ function About() {
    Projects — horizontal filmstrip driven by vertical scroll
    ================================================================== */
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project }) {
   return (
     <article className="pj">
       <span className="pj-reg" aria-hidden="true" />
 
       <header className="pj-head">
-        <span className="anno">
-          {String(index + 1).padStart(2, "0")} / {project.category}
-        </span>
+        <span className="label">{project.category}</span>
         <span className={`pj-status ${project.status === "Completed" ? "done" : "wip"}`}>
           {project.status}
         </span>
@@ -913,14 +849,14 @@ function ProjectCard({ project, index }) {
 
       {project.problem && (
         <div className="pj-note">
-          <span className="anno">PROBLEM</span>
+          <span className="label">PROBLEM</span>
           <p>{project.problem}</p>
         </div>
       )}
 
       {project.solution && (
         <div className="pj-note">
-          <span className="anno">APPROACH</span>
+          <span className="label">APPROACH</span>
           <p>{project.solution}</p>
         </div>
       )}
@@ -1015,7 +951,6 @@ function Projects() {
       <div className="strip-stick">
         <div className="wrap strip-head">
           <SheetHead
-            no="SHEET 02"
             kicker="Selected work"
             title="Projects"
             note="Machine learning, data engineering, robotics and industrial work."
@@ -1034,8 +969,8 @@ function Projects() {
             ref={trackRef}
             style={canPin ? { x } : undefined}
           >
-            {data.projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+            {data.projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </motion.div>
         </div>
@@ -1057,8 +992,7 @@ function Experience() {
     <section id="experience" className="sheet sheet-alt">
       <div className="wrap">
         <SheetHead
-          no="SHEET 03"
-          kicker="Revision history"
+          kicker="Experience"
           title="Experience & leadership"
           note="Robotics prototyping, manufacturing operations, student leadership and internships."
         />
@@ -1075,14 +1009,12 @@ function Experience() {
             viewport={seen}
             variants={stagger}
           >
-            {data.experience.map((item, i) => (
+            {data.experience.map((item) => (
               <motion.li key={item.id} className="rev-row" variants={rise}>
-                <span className="anno rev-no">R{String(i + 1).padStart(2, "0")}</span>
-
                 <div className="rev-main">
                   <div className="rev-line">
                     <h3>{item.role}</h3>
-                    <span className="anno rev-date">{item.dates}</span>
+                    <span className="label rev-date">{item.dates}</span>
                   </div>
 
                   <p className="rev-org">
@@ -1101,7 +1033,7 @@ function Experience() {
                   </div>
                 </div>
 
-                {item.type && <span className="anno rev-type">{item.type}</span>}
+                {item.type && <span className="label rev-type">{item.type}</span>}
               </motion.li>
             ))}
           </motion.ol>
@@ -1119,7 +1051,7 @@ function Education() {
   return (
     <section id="education" className="sheet">
       <div className="wrap">
-        <SheetHead no="SHEET 04" kicker="Qualifications" title="Education" />
+        <SheetHead kicker="Education" title="Where I studied" />
 
         <motion.div
           className="edu-grid"
@@ -1130,7 +1062,7 @@ function Education() {
         >
           {data.education.map((item) => (
             <motion.article key={item.id} className="edu" variants={rise}>
-              <span className="anno edu-date">{item.dates}</span>
+              <span className="label edu-date">{item.dates}</span>
               <h3>{item.degree}</h3>
               <p className="edu-field">{item.field}</p>
               <p className="edu-inst">
@@ -1160,8 +1092,7 @@ function Skills() {
     <section id="skills" className="sheet sheet-alt">
       <div className="wrap">
         <SheetHead
-          no="SHEET 05"
-          kicker="Parts list"
+          kicker="Skills"
           title="Skills & technologies"
           note="Grouped straight from the Skills tab of the spreadsheet."
         />
@@ -1173,7 +1104,7 @@ function Skills() {
           viewport={seen}
           variants={stagger}
         >
-          {data.skills.map((group, gi) => {
+          {data.skills.map((group) => {
             const Icon = skillIcons[group.category] || Code2;
 
             return (
@@ -1183,9 +1114,7 @@ function Skills() {
                     <Icon size={16} />
                   </span>
                   <h3>{group.category}</h3>
-                  <span className="anno part-qty">
-                    {String(gi + 1).padStart(2, "0")} · QTY {group.items.length}
-                  </span>
+                  <span className="label part-qty">{group.items.length}</span>
                 </header>
 
                 <ul>
@@ -1193,7 +1122,7 @@ function Skills() {
                     <li key={item.name}>
                       <span className="part-name">{item.name}</span>
                       <span className="part-leader" aria-hidden="true" />
-                      {item.level && <span className="anno part-level">{item.level}</span>}
+                      {item.level && <span className="label part-level">{item.level}</span>}
                     </li>
                   ))}
                 </ul>
@@ -1229,7 +1158,7 @@ function Interests() {
   return (
     <section id="interests" className="sheet">
       <div className="wrap">
-        <SheetHead no="SHEET 06" kicker="Research direction" title="Interests & focus areas" />
+        <SheetHead kicker="Interests" title="What I want to work on next" />
 
         <motion.div
           className="focus-grid"
@@ -1238,7 +1167,7 @@ function Interests() {
           viewport={seen}
           variants={stagger}
         >
-          {data.interests.map((interest, i) => {
+          {data.interests.map((interest) => {
             const Icon = iconMap[interest.icon] || Cpu;
 
             return (
@@ -1247,11 +1176,10 @@ function Interests() {
                   <span className="focus-icon">
                     <Icon size={18} />
                   </span>
-                  <span className="anno">{String(i + 1).padStart(2, "0")}</span>
                 </header>
 
                 <h3>{interest.title}</h3>
-                <span className="anno focus-cat">{interest.category}</span>
+                <span className="label focus-cat">{interest.category}</span>
                 <p>{interest.description}</p>
               </motion.article>
             );
@@ -1274,13 +1202,13 @@ function Contact() {
       <div className="wrap">
         <div className="contact">
           <motion.span
-            className="anno"
+            className="label"
             initial="hidden"
             whileInView="visible"
             viewport={seen}
             variants={rise}
           >
-            SHEET 07 — ISSUE FOR CONSTRUCTION
+            Get in touch
           </motion.span>
 
           <h2 className="contact-title">
@@ -1344,8 +1272,8 @@ function Contact() {
 
       <footer className="foot">
         <div className="wrap foot-inner">
-          <span className="anno">{profile.name} — DWG 001</span>
-          <span className="anno">© {new Date().getFullYear()} · Managed from Google Sheets</span>
+          <span className="label">{profile.name}</span>
+          <span className="label">© {new Date().getFullYear()} · Managed from Google Sheets</span>
         </div>
       </footer>
     </section>
@@ -1360,7 +1288,7 @@ export default function App() {
   const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
-    const nodes = activeSheets
+    const nodes = navSections
       .map((sheet) => document.getElementById(sheet.id))
       .filter(Boolean);
 
@@ -1382,11 +1310,9 @@ export default function App() {
   return (
     <div className="app">
       <div className="paper" aria-hidden="true" />
-      <SheetFrame />
       <motion.div className="progress" style={{ scaleX: progress }} aria-hidden="true" />
 
       <Nav active={active} />
-      <TitleBlock active={active} />
 
       <main>
         <Cover />

@@ -1,51 +1,56 @@
 /* ==================================================================
-   "Drafting sheet" design tokens.
+   Design tokens — light.
 
-   The direction comes from two places: the Site_config tab of the
-   spreadsheet (dark, cyan / blue, futuristic), and the fact that this
-   is a mechanical engineer's route into robotics — so the visual
-   language is a cyanotype blueprint. Deep prussian ground, chalk line
-   work, monospace annotation, and one warm signal colour borrowed
-   from industrial safety marking.
+   The Site_config tab asks for cyan / blue, which this keeps as a
+   single electric blue accent. It also asks for theme_mode = dark,
+   which is overridden here on the site owner's direct instruction.
    ================================================================== */
 
 :root {
-  --sheet: #071a2e;
-  --sheet-2: #0a2138;
-  --sheet-3: #0d2942;
-  --sheet-raise: #103150;
+  --paper: #fbfbfd;
+  --surface: #ffffff;
+  --surface-2: #f3f5f9;
+  --surface-3: #eaeef5;
 
-  --chalk: #eaf3fb;
-  --chalk-2: #a3bdd6;
-  --chalk-3: #6a87a4;
+  --ink: #0d1117;
+  --ink-2: #4d5666;
+  --ink-3: #8a93a3;
 
-  --line: rgba(150, 196, 236, 0.15);
-  --line-2: rgba(150, 196, 236, 0.3);
-  --line-3: rgba(150, 196, 236, 0.55);
+  --line: rgba(13, 17, 23, 0.09);
+  --line-2: rgba(13, 17, 23, 0.16);
+  --line-3: rgba(13, 17, 23, 0.3);
 
-  /* Warm signal, used sparingly — live states and emphasis only */
-  --signal: #ff6a3d;
-  --signal-2: #ff8b62;
-  --signal-soft: rgba(255, 106, 61, 0.12);
-  --signal-line: rgba(255, 106, 61, 0.42);
+  --accent: #1b4dff;
+  --accent-2: #4a72ff;
+  --accent-soft: rgba(27, 77, 255, 0.07);
+  --accent-line: rgba(27, 77, 255, 0.28);
 
-  --ice: #7fd7e8;
-  --ice-soft: rgba(127, 215, 232, 0.12);
+  --ok: #0b8f60;
+  --ok-soft: rgba(11, 143, 96, 0.09);
+  --warn: #b26a00;
+  --warn-soft: rgba(178, 106, 0, 0.1);
 
-  --ok: #57d9a3;
+  --shadow-sm: 0 1px 2px rgba(13, 17, 23, 0.04), 0 4px 14px rgba(13, 17, 23, 0.04);
+  --shadow-md: 0 2px 6px rgba(13, 17, 23, 0.05), 0 14px 40px rgba(13, 17, 23, 0.07);
+  --shadow-lg: 0 8px 20px rgba(13, 17, 23, 0.07), 0 30px 70px rgba(13, 17, 23, 0.1);
 
-  --frame: 14px;
-  --shell: 1240px;
+  --r-lg: 18px;
+  --r-md: 12px;
+  --r-sm: 8px;
+
+  --shell: 1200px;
   --gutter: clamp(20px, 4.5vw, 56px);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
   --font-display: "Bricolage Grotesque", "Archivo", system-ui, sans-serif;
   --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  color-scheme: dark;
+  color-scheme: light;
   font-family: var(--font-body);
-  color: var(--chalk);
-  background: var(--sheet);
+  color: var(--ink);
+  background: var(--paper);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -58,15 +63,15 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  scroll-padding-top: 88px;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: var(--sheet);
-  color: var(--chalk);
+  background: var(--paper);
+  color: var(--ink);
   overflow-x: hidden;
 }
 
@@ -89,27 +94,27 @@ h3 {
 }
 
 :focus-visible {
-  outline: 2px solid var(--signal);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
 ::selection {
-  background: var(--signal);
-  color: #16070200;
-  color: #180702;
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .mono {
   font-family: var(--font-mono);
 }
 
-/* Drafting annotation label — used everywhere for small technical text */
-.anno {
+/* Small uppercase label — used for kickers and metadata */
+.label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--chalk-3);
+  color: var(--ink-3);
 }
 
 .sr-only {
@@ -125,20 +130,21 @@ h3 {
 }
 
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--sheet);
+  background: var(--surface-2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1c4067;
-  border-radius: 0;
+  background: #cbd2de;
+  border-radius: 999px;
+  border: 2px solid var(--surface-2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--signal);
+  background: var(--ink-3);
 }
 
 @media (prefers-reduced-motion: reduce) {
