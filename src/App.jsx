@@ -23,7 +23,6 @@ import {
   Globe,
   Layers,
   Mail,
-  MapPin,
   Menu,
   Shuffle,
   TrendingUp,
@@ -298,7 +297,12 @@ const stagger = {
 };
 
 
-const seen = { once: true, margin: "-70px" };
+/*
+ * Only the bottom edge is pulled in, so content reveals just before it fully
+ * enters. Shrinking the top edge too would mean a heading landed there by a
+ * nav-link jump sits outside the trigger zone and stays hidden.
+ */
+const seen = { once: true, margin: "0px 0px -60px 0px" };
 
 const iconMap = { robot: Bot, brain: Brain, globe: Globe, factory: Factory, cpu: Cpu };
 
@@ -759,68 +763,110 @@ function Cover() {
    ================================================================== */
 
 const CAPABILITIES = [
-  { icon: Bot, title: "Robotics", body: "Mobile robotics, prototyping, embedded systems." },
-  { icon: Brain, title: "Machine Learning", body: "Applied ML, evaluation, real-world workflows." },
-  { icon: Globe, title: "Geospatial AI", body: "Satellite data, land cover, urban change." },
-  { icon: Factory, title: "Industry 4.0", body: "Manufacturing analytics, OEE, automation." },
+  {
+    icon: Bot,
+    title: "Robotics",
+    body: "Mobile robotics, prototyping and embedded systems.",
+  },
+  {
+    icon: Brain,
+    title: "Machine Learning",
+    body: "Applied ML, model evaluation and real-world workflows.",
+  },
+  {
+    icon: Globe,
+    title: "Geospatial AI",
+    body: "Satellite data, land cover and urban change.",
+  },
+  {
+    icon: Factory,
+    title: "Industry 4.0",
+    body: "Manufacturing analytics, OEE and automation.",
+  },
 ];
 
+/*
+ * The long bio reads as a wall in one block. Lifting its first sentence out
+ * gives the section something to open on and leaves the rest as detail.
+ *
+ * A sentence only ends where at least two lowercase letters precede the stop,
+ * which is what keeps abbreviations from splitting the line — "M.Sc." and
+ * "B.Tech." would otherwise both read as the end of a sentence.
+ */
+const splitLead = (bio) => {
+  const match = /[a-z]{2}\.\s+(?=[A-Z])/.exec(bio);
+  if (!match) return [bio, ""];
+
+  const at = match.index + match[0].length;
+  return [bio.slice(0, at).trim(), bio.slice(at).trim()];
+};
+
 function About() {
-  const { profile } = data;
+  const { profile, education, experience, interests } = data;
+  const [lead, rest] = splitLead(profile.longBio);
+
+  // Every fact below is read from the sheet, never asserted independently.
+  const facts = [
+    { k: "Based in", v: profile.location },
+    {
+      k: "Studying",
+      v: education[0] && `${education[0].degree} · ${education[0].institution}`,
+    },
+    {
+      k: "Most recently",
+      v: experience[0] && `${experience[0].role} · ${experience[0].organization}`,
+    },
+    {
+      k: "Focused on",
+      v: interests.slice(0, 3).map((i) => i.title).join(", "),
+    },
+  ].filter((f) => f.v);
 
   return (
     <section id="about" className="sheet">
       <div className="wrap">
         <SheetHead kicker="About" title="From machines to machines that think." />
 
-        <div className="about-grid">
-          <motion.div
-            className="about-body"
-            initial="hidden"
-            whileInView="visible"
-            viewport={seen}
-            variants={stagger}
-          >
-            <motion.p className="about-lead" variants={rise}>
-              {profile.longBio}
-            </motion.p>
+        <motion.div
+          className="about"
+          initial="hidden"
+          whileInView="visible"
+          viewport={seen}
+          variants={stagger}
+        >
+          <motion.p className="about-lead" variants={rise}>
+            {lead}
+          </motion.p>
 
-            <motion.div className="about-meta" variants={rise}>
-              {profile.location && (
-                <span className="tag">
-                  <MapPin size={13} />
-                  {profile.location}
-                </span>
-              )}
-              {profile.email && (
-                <span className="tag">
-                  <Mail size={13} />
-                  {profile.email}
-                </span>
-              )}
-            </motion.div>
-          </motion.div>
+          <div className="about-split">
+            {rest && (
+              <motion.p className="about-rest" variants={rise}>
+                {rest}
+              </motion.p>
+            )}
 
-          <motion.ul
-            className="cap-list"
-            initial="hidden"
-            whileInView="visible"
-            viewport={seen}
-            variants={stagger}
-          >
+            <motion.dl className="facts" variants={rise}>
+              {facts.map((fact) => (
+                <div key={fact.k}>
+                  <dt className="label">{fact.k}</dt>
+                  <dd>{fact.v}</dd>
+                </div>
+              ))}
+            </motion.dl>
+          </div>
+
+          <motion.ul className="caps" variants={stagger}>
             {CAPABILITIES.map((cap) => (
-              <motion.li key={cap.title} variants={rise}>
+              <motion.li key={cap.title} className="cap" variants={rise}>
                 <span className="cap-icon">
-                  <cap.icon size={17} />
+                  <cap.icon size={18} />
                 </span>
-                <span className="cap-text">
-                  <strong>{cap.title}</strong>
-                  <em>{cap.body}</em>
-                </span>
+                <h3>{cap.title}</h3>
+                <p>{cap.body}</p>
               </motion.li>
             ))}
           </motion.ul>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -1082,10 +1128,24 @@ function Education() {
    Skills — a parts list
    ================================================================== */
 
+/*
+ * Eleven category blocks read as eleven near-identical lists, and a marquee
+ * underneath repeated the same names again. This shows every skill at once
+ * and lets the category act as a filter instead of a divider.
+ */
+const ALL_SKILLS = data.skills.flatMap((group) =>
+  group.items.map((item) => ({ ...item, category: group.category })),
+);
+
+const isTopSkill = (level) => text(level).toLowerCase().includes("top");
+
 function Skills() {
-  const marquee = useMemo(
-    () => data.skills.flatMap((group) => group.items.map((item) => item.name)),
-    [],
+  const [filter, setFilter] = useState(null);
+  const reduce = useReducedMotion();
+
+  const shown = useMemo(
+    () => (filter ? ALL_SKILLS.filter((skill) => skill.category === filter) : ALL_SKILLS),
+    [filter],
   );
 
   return (
@@ -1094,57 +1154,73 @@ function Skills() {
         <SheetHead
           kicker="Skills"
           title="Skills & technologies"
-          note="Grouped straight from the Skills tab of the spreadsheet."
+          note={`${ALL_SKILLS.length} skills across ${data.skills.length} areas. Pick an area to narrow the list.`}
         />
 
         <motion.div
-          className="parts"
+          className="filters"
           initial="hidden"
           whileInView="visible"
           viewport={seen}
           variants={stagger}
+          role="group"
+          aria-label="Filter skills by area"
         >
-          {data.skills.map((group) => {
-            const Icon = skillIcons[group.category] || Code2;
+          <motion.button
+            type="button"
+            className={`filter ${filter === null ? "on" : ""}`}
+            onClick={() => setFilter(null)}
+            variants={rise}
+            aria-pressed={filter === null}
+          >
+            All
+            <span>{ALL_SKILLS.length}</span>
+          </motion.button>
 
-            return (
-              <motion.section key={group.category} className="part" variants={rise}>
-                <header>
-                  <span className="part-icon">
-                    <Icon size={16} />
-                  </span>
-                  <h3>{group.category}</h3>
-                  <span className="label part-qty">{group.items.length}</span>
-                </header>
-
-                <ul>
-                  {group.items.map((item) => (
-                    <li key={item.name}>
-                      <span className="part-name">{item.name}</span>
-                      <span className="part-leader" aria-hidden="true" />
-                      {item.level && <span className="label part-level">{item.level}</span>}
-                    </li>
-                  ))}
-                </ul>
-              </motion.section>
-            );
-          })}
-        </motion.div>
-      </div>
-
-      <div className="ticker" aria-hidden="true">
-        <div className="ticker-track">
-          {[0, 1].map((copy) => (
-            <div className="ticker-row" key={copy}>
-              {marquee.map((name) => (
-                <span key={`${copy}-${name}`}>
-                  {name}
-                  <i>◦</i>
-                </span>
-              ))}
-            </div>
+          {data.skills.map((group) => (
+            <motion.button
+              key={group.category}
+              type="button"
+              className={`filter ${filter === group.category ? "on" : ""}`}
+              onClick={() => setFilter(filter === group.category ? null : group.category)}
+              variants={rise}
+              aria-pressed={filter === group.category}
+            >
+              {group.category}
+              <span>{group.items.length}</span>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
+
+        <motion.ul className="skill-grid" layout={!reduce}>
+          <AnimatePresence mode="popLayout" initial={false}>
+            {shown.map((skill) => {
+              const Icon = skillIcons[skill.category] || Code2;
+              const top = isTopSkill(skill.level);
+
+              return (
+                <motion.li
+                  key={skill.name}
+                  className={`skill ${top ? "is-top" : ""}`}
+                  layout={!reduce}
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ duration: 0.32, ease: EASE }}
+                >
+                  <span className="skill-icon">
+                    <Icon size={15} />
+                  </span>
+
+                  <span className="skill-text">
+                    <strong>{skill.name}</strong>
+                    {skill.level && <em>{skill.level}</em>}
+                  </span>
+                </motion.li>
+              );
+            })}
+          </AnimatePresence>
+        </motion.ul>
       </div>
     </section>
   );
